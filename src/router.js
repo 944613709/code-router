@@ -1,12 +1,12 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Login from './components/MyLogin.vue'
 import Home from './components/MyHome.vue'
-import Users from './components/menus/MyUsers.vue'
-import Rights from './components/menus/MyRights.vue'
+import Nodes from './components/menus/MyNodes.vue'
+import Flowcharts from './components/menus/MyFlowcharts.vue'
 import Goods from './components/menus/MyGoods.vue'
 import Orders from './components/menus/MyOrders.vue'
 import Settings from './components/menus/MySettings.vue'
-import UserDetail from './components/user/MyUserDetail.vue'
+import NodeDetail from './components/nodes/MyNodeDetail.vue'
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -14,14 +14,14 @@ const router = createRouter({
         {path:'/',redirect:'/login'},
         {path:'/login',component: Login},
         {path:'/home',component: Home,
-         redirect:'/home/users',
+         redirect:'/home/nodes',
          children:[
-           { path:'users',component:Users},
-           { path:'rights',component:Rights},
+           { path:'nodes',component:Nodes},
+           { path:'flowcharts',component:Flowcharts},
            { path: 'goods', component: Goods },
            { path: 'orders', component: Orders },
            { path: 'settings', component: Settings },
-           { path: 'users/:id', component: UserDetail , props: true},
+           { path: 'nodes/:id', component: NodeDetail , props: true},
          ]
         },
     ],
