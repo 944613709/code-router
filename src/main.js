@@ -6,7 +6,6 @@ import './assets/css/bootstrap.css'
 import './index.css'
 import router from './router'
 
-
 // 创建 app 实例
 const app = createApp(App)
 app.use(router)

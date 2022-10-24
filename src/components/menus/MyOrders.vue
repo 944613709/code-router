@@ -1,5 +1,4 @@
 <template>
-  <h4 class="text-center">订单管理</h4>
 </template>
 
 <script>

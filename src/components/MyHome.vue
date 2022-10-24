@@ -19,7 +19,6 @@
 import MyHeader from './subcomponents/MyHeader.vue'
 // 左侧边栏组件
 import MyAside from './subcomponents/MyAside.vue'
-
 export default {
   name: 'MyHome',
   // 注册组件

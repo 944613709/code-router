@@ -16,13 +16,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(item,i) in portlist" :key = 'item.id'>
+      <tr v-for="(item,i) in processNodes" :key = 'item.id'>
         <td>{{i+1}}</td>
-        <td>{{item.name}}</td>
-        <td>{{item.type}}</td>
-        <td>{{item.ip}}</td>
-        <td>{{item.port}}</td>
-        <td>{{item.path}}</td>
+        <td>{{item.node.name}}</td>
+        <td>{{item.node.type}}</td>
+        <td>{{item.node.ip}}</td>
+        <td>{{item.node.port}}</td>
+        <td>{{item.node.path}}</td>
         <td>
           <router-link :to="'/home/nodes/' + item.id">查看详情</router-link>
         </td>
@@ -32,11 +32,21 @@
 </template>
 
 <script>
+import seq from 'lodash-es/seq'
+import api from '/src/js/api.js'
 export default {
   name: 'MyNodes',
+  mounted(){
+    api.getAllNodesByProcessId(1).then(res =>{
+      this.processNodes = res.data.valueMap.processNodes;
+      console.log(this.processNodes)
+    })
+  },
   data() {
     return {
-      // 用户列表数据
+      processNodes:[],//读取axios的数据
+
+      // js文件中示例的用户列表数据
       portlist: [
         { id: 1, name: '潍柴设计部', type: 1,ip: '127.0.0.1',port: 1234, path: "/designDept"},
         { id: 2, name: '潍柴零件供应商', type: 1,ip: '127.0.0.1',port: 1234, path: "/partsSupplier"},
